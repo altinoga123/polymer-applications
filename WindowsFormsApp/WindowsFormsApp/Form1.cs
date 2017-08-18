@@ -22,6 +22,7 @@ namespace WindowsFormsApp
         {
             ShowDialog();
             var sum = 1 - 1;
+            var mes = sum / 2;
         }
     }
 }

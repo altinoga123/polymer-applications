@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Test</title>
+    <link href="components/bower_components/paper-toolbar/paper-toolbar.html" rel="import" />
+    <link href="components/bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html" rel="import" />
+    <link href="components/bower_components/iron-icons/iron-icons.html" rel="import" />
+    <link href="components/bower_components/paper-material/paper-material.html" rel="import" />
+    <link href="components/bower_components/iron-dropdown/iron-dropdown.html" rel="import" />
+    <link href="components/bower_components/paper-icon-button/paper-icon-button.html" rel="import" />
+    <link href="components/bower_components/paper-menu/paper-menu.html" rel="import" />
+    <link href="components/bower_components/paper-item/paper-item.html" rel="import" />
+    <link href="components/bower_components/paper-menu/paper-submenu.html" rel="import" />
+    <link href="domElements/main-dashboard.html" rel="import" />
+    <style is="custom-style">
+        paper-toolbar.red {
+            --paper-toolbar-background: red;
+            --paper-toolbar-title: {
+            font-style: italic;
+            font-weight: bold;
+        }
+        }
+    .paper-item-link {
+    color: inherit;
+    text-decoration: none;
+  }
+    paper-toolbar {
+        left:0px;
+        top:0px;
+        width:100%
+    }
+    </style>
+</head>
+<body>
+
+ 
+
+
+    <paper-toolbar class="red toolbar tall" bottom-justify="end">
+        <paper-icon-button icon="menu"></paper-icon-button>
+        <span class="title">Boilerplate</span>
+        <paper-icon-button icon="refresh" raised></paper-icon-button>
+        <paper-icon-button icon="add" raised>+</paper-icon-button>
+    </paper-toolbar>
+    <div >
+        <div style="float:left; position:absolute;">
+            <paper-menu>
+                <paper-submenu>
+                    <paper-item class="menu-trigger">Topics</paper-item>
+                    <paper-menu class="menu-content">
+                        <a class="paper-item-link" href="../components/zero-list-hero/demo/newsreader-demo.html" tabindex="-1">
+                            <paper-item>Inbox</paper-item>
+                        </a>
+                        <paper-item>Topic 2</paper-item>
+                        <paper-item>Topic 3</paper-item>
+                    </paper-menu>
+                </paper-submenu>
+                <paper-submenu>
+                    <paper-item class="menu-trigger">Faves</paper-item>
+                    <paper-menu class="menu-content">
+                        <paper-item>Fave 1</paper-item>
+                        <paper-item>Fave 2</paper-item>
+                    </paper-menu>
+                </paper-submenu>
+                <paper-submenu disabled>
+                    <paper-item class="menu-trigger">Unavailable</paper-item>
+                    <paper-menu class="menu-content">
+                        <paper-item>Disabled 1</paper-item>
+                        <paper-item>Disabled 2</paper-item>
+                    </paper-menu>
+                </paper-submenu>
+            </paper-menu>
+        </div>
+        <div style="margin-left:200px; margin-top:20px;position:center">
+            <main-dashboard></main-dashboard>
+        </div>
+    </div>
+    <script src="components/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+</body>
+
+</html>

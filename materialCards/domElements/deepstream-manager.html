@@ -1,0 +1,109 @@
+﻿<link rel="import" href="../components/bower_components/polymer/polymer.html" />
+<link rel="import" href="../components/bower_components/paper-card/paper-card.html" />
+<link rel="import" href="../components/bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../components/bower_components/paper-input/paper-input.html" />
+<link rel="import" href="../components/bower_components/paper-input/paper-textarea.html" />
+<link rel="import" href="../components/bower_components/deepstream.io-tools-polymer/ds-connection.html">
+<link rel="import" href="../components/bower_components/deepstream.io-tools-polymer/ds-login.html">
+<link rel="import" href="../components/bower_components/deepstream.io-tools-polymer/ds-record.html">
+
+
+<dom-module name="deepstream-manager">
+    <template>
+        <ds-connection url="localhost:6020" state="{{connectionState}}" ds={{ds}}>
+        </ds-connection>
+        <ds-login auto-login ds="[[ds]]">
+        </ds-login>
+        <iron-ajax id="ajaxGet" auto
+                   url="http://localhost:3000/getPersonName"
+                   last-response="{{
+                   }}"
+                   handle-as="json">
+        </iron-ajax>
+
+        <iron-ajax id="ajaxPost" url="http://localhost:3000/getPersonName" method="POST" on-response="_refresh"></iron-ajax>
+
+        <iron-ajax id="ajaxDelete" method="DELETE" on-response="_refresh"></iron-ajax>
+        <div class$="[[connectionState]]">
+            <ds-record name="[[personname]]" ds="[[ds]]" data={{vote}}>
+
+                <paper-card heading={{personname}}>
+                    <div class="card-content">
+                        <h3> DeepStram Manager</h3>
+                        <br />
+                         <table>
+                            <tr>
+                                <td>Deepstream Query:</td>
+                                <td><paper-input value="{{querystring}}"></paper-input></td>
+                                <td><paper-button class="default" on-click="callDS">Search DS</paper-button></td>
+                            </tr>
+                            <tr>
+                                <td>DeepStream Result:</td>
+                                <td colspan="2"><paper-teaxtarea label="Textarea label">{{vote.value}}</paper-teaxtarea></td>
+                            </tr>
+                        </table>
+                        
+                        <content>
+                        </content>
+                    </div>
+                    <div class="card-actions">
+                        <paper-button >Vote up</paper-button>
+                        <paper-button >Vote Down</paper-button>
+                    </div>
+                </paper-card>
+            </ds-record>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: "deepstream-manager",
+            properties: {
+                querystring: String,
+                personname:"edirama",
+                resultdetail: {
+                    type: String,
+                    computed: '_checkValue()'
+                }
+            },
+            callfromDb: function(){
+                
+            },
+            insertEntry: function (entry) {
+                this.$.ajaxPost.body = JSON.stringify(entry);
+                this.$.ajaxPost.generateRequest();
+            },
+
+            _handleRemove: function (e) {
+                var entry = e.currentTarget.entry;
+                this.$.ajaxDelete.url = "/cart-api/" + entry.id;
+                this.$.ajaxDelete.generateRequest();
+            },
+
+            _refresh: function () {
+                this.$.ajaxGet.generateRequest();
+            },
+            callDS: function () {
+                var dsRecord = this.ds.record.getRecord(this.querystring);//this.$$('ds-record');
+                this.personname = dsRecord.name;
+                //this.resultdetail = dsRecord.data.value;
+                //dsRecord.set('data.value', dsRecord.data.value + 1);
+            },
+            _checkValue: function () {
+                var dsRecord = this.$$('ds-record');
+                if (dsRecord.data)
+                    return dsRecord.data.value;
+                else
+                    return 'Not avail';
+                //else
+                //{
+                //    var record = this.ds.getRecord(this.personname);
+                //    record.set({
+                //        name: this.personname, value: 0
+                //    });
+                //    return 0;
+                //}
+            }
+        });
+    </script>
+</dom-module>

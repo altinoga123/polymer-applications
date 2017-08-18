@@ -1,0 +1,96 @@
+﻿<link rel="import" href="../components/bower_components/polymer/polymer.html" />
+<link href="../components/bower_components/app-layout/app-drawer-layout/app-drawer-layout.html" rel="import" />
+<link href="../components/bower_components/app-layout/app-drawer/app-drawer.html" rel="import" />
+<link href="../components/bower_components/app-layout/app-header-layout/app-header-layout.html" rel="import" />
+<link href="../components/bower_components/app-layout/app-header/app-header.html" rel="import" />
+<link href="../components/bower_components/iron-icons/iron-icons.html" rel="import" />
+<link href="../components/bower_components/app-layout/app-toolbar/app-toolbar.html" rel="import" />
+<link href="../components/bower_components/paper-button/paper-button.html" rel="import" />
+<link href="../components/bower_components/paper-icon-button/paper-icon-button.html" rel="import" />
+
+<dom-module name="voteup-app">
+    <template>
+        <style>
+            #btnlogin {
+                position: absolute;
+                right: 10px;
+                top: 15px;
+            }
+            app-drawer{
+               z-index:1;
+            }
+            app-toolbar {
+                background-color: #4285f4;
+                color: #fff;
+            }
+            #drawermenu{
+                position:relative;
+                top:40px;
+            }
+        </style>
+        <app-layout-drawer fullbleed>
+            <app-drawer swipe-open>
+                <div id="drawermenu">
+                    <ul>
+                        <li>
+                            <paper-icon-button class="grayIcon" icon="home" text="Home of homeless"></paper-icon-button>
+                        </li>
+                        <li>
+                            <paper-icon-item>
+                                <iron-icon class="grayIcon" icon="note-add" item-icon></iron-icon>
+                                <span>Add a note</span>
+                            </paper-icon-item>
+                        </li>
+                        <li>
+                            <paper-icon-item>
+                                <iron-icon class="grayIcon" icon="loyalty" item-icon></iron-icon>
+                                <span>Loyalty</span>
+                            </paper-icon-item>
+                        </li>
+                        <li>
+                            <paper-icon-item>
+                                <iron-icon class="grayIcon" icon="speaker-notes" item-icon></iron-icon>
+                                <span>Speaker notes</span>
+                            </paper-icon-item>
+                        </li>
+                        <li>
+                            <paper-icon-item>
+                                <iron-icon class="grayIcon" icon="event-note" item-icon></iron-icon>
+                                <span>Events</span>
+                            </paper-icon-item>
+                        </li>
+                        <li>
+                            <paper-icon-item>
+                                <iron-icon class="grayIcon" icon="settings" item-icon></iron-icon>
+                                <span>Settings</span>
+                            </paper-icon-item>
+                        </li>
+                    </ul>
+                </div>
+            </app-drawer>
+            <app-header-layout>
+                <app-header>
+                    <app-toolbar reveals>
+                        <paper-icon-button id="tog" icon="menu" drawer-toggle></paper-icon-button>
+                        <h2>VoteUp - Welcomes all of you</h2>
+                        <paper-icon-button id="btnlogin" icon="lock">login</paper-icon-button>
+                    </app-toolbar>
+                </app-header>
+            </app-header-layout>
+        </app-layout-drawer>
+    </template>
+    <script>
+        Polymer({
+            is: "voteup-app",
+            attached: function () {
+                var drawer = document.querySelector('app-drawer');
+                document.querySelector('#tog').addEventListener('tap', function () {
+                    drawer.toggle();
+                });
+            },
+            popitup: function () {
+                alert(this.value);
+            }
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,36 @@
+﻿<link rel="import" href="../../components/bower_components/polymer/polymer.html" />
+
+<dom-module name="article-style1" attributes="articlename,articlebody">
+
+    <template>
+        <link href="../../components/bower_components/paper-card/paper-card.html" rel="import" />
+        <link href="../../components/bower_components/paper-button/paper-button.html" rel="import" />
+        <paper-card heading={{articlename}}>
+            <div class="card-content">
+                <p>
+                    <content> {{articlebody}}</content>
+                </p>
+            </div>
+            <div class="card-actions">
+                <paper-button>Share</paper-button>
+                <paper-button>Explore!</paper-button>
+            </div>
+        </paper-card>
+       
+    </template>
+
+    <script>
+        Polymer({
+            is: "article-style1",
+            properties: {
+                articlename: String,
+                articlebody: String
+            },
+            ready: function () {
+                articlename = 'hekr';
+                articlebody = 'hasdjsdfsdfs';
+            }
+           
+        });
+    </script>
+</dom-module>

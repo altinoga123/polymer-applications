@@ -22,8 +22,8 @@ namespace WindowsFormsApp
         {
             var sum = 1 - 1;
             var mes = sum / 2;
-            cubee;
-            senjorita;
+            Bella haddid;
+            Xhemal gotinori;
         }
     }
 }

@@ -20,10 +20,10 @@ namespace WindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ShowDialog();
             var sum = 1 - 1;
             var mes = sum / 2;
             cubee;
+            senjorita;
         }
     }
 }

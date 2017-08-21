@@ -22,14 +22,12 @@ namespace WindowsFormsApp
         {
             var sum = 1 - 1;
             var mes = sum / 2;
+            label1.Text = mes.ToString();
         }
 
-        private class Bella
+        private void label1_Click(object sender, EventArgs e)
         {
-        }
 
-        private class Xhemal
-        {
         }
     }
 }

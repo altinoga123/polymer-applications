@@ -20,14 +20,15 @@ namespace WindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var sum = 1 - 1;
+            const int sum = 15;
             var mes = sum / 2;
-            label1.Text = mes.ToString();
+            var diff = mes - sum;
+            label1.Text = diff.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            label1.Text = @"0";
         }
     }
 }

@@ -22,6 +22,12 @@ namespace WindowsFormsApp
         {
             var sum = 1 - 1;
             var mes = sum / 2;
+            label1.Text = mes.ToString();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

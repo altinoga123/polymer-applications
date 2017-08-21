@@ -22,8 +22,8 @@ namespace WindowsFormsApp
         {
             const int sum = 15;
             var mes = sum / 2;
-
-            label1.Text = mes.ToString();
+            var diff = mes - sum;
+            label1.Text = diff.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
